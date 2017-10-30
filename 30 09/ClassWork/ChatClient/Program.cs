@@ -3,6 +3,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
+
 namespace ChatClient
 {
     class Program
@@ -10,6 +12,9 @@ namespace ChatClient
         static UdpClient client = new UdpClient(5000);
         static void Main(string[] args)
         {
+            
+
+            return;
             client.Client.ReceiveTimeout = 1000;
             string message;
             CancellationTokenSource source = new CancellationTokenSource();
@@ -36,14 +41,14 @@ namespace ChatClient
                     var message = Encoding.UTF8.GetString(data);
                     System.Console.WriteLine($"getted {message}");
                 }
-                catch
+                catch   
                 {
                     if(token.IsCancellationRequested)
                     {
                         System.Console.WriteLine("Second thread dead");
                         return;
                     }
-                    System.Console.WriteLine("I have exception");
+                    //System.Console.WriteLine("I have exception");
                 }
             }
         }
