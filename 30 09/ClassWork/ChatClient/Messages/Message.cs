@@ -1,7 +1,7 @@
 namespace ChatClient.Messages
 {
-    public class Message
+    public abstract class Message
     {
-        public int MessageType {get; set;}
+        public abstract MessageType MessageType {get;}
     }
 }

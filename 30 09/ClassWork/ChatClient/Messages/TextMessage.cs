@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace ChatClient.Messages
 {
@@ -6,5 +7,10 @@ namespace ChatClient.Messages
     {
         public Guid Id {get; set;}
         public string Text {get; set;}
+
+        [JsonIgnore]
+        public int ReadedCount {get; set;}
+
+        public override MessageType MessageType => MessageType.TextMessage;
     }
 }
