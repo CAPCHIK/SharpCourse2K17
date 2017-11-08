@@ -6,6 +6,7 @@ namespace Shared.Models.Messages
         Text,
         TextAccept,
         OnlineRequest,
-        OnlineResponse
+        Login,
+        Register
     }
 }

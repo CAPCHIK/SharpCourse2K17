@@ -4,6 +4,9 @@ namespace Shared.Models.Responses
     {
         OK,
         UnknownError,
-        UserNameBusy
+        UserNameBusy,
+        TextMessage,
+        OnlineUsers,
+        IncorrectLoginOrPassword
     }
 }

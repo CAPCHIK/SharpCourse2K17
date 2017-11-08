@@ -9,8 +9,9 @@ namespace Client.ConsoleWrappers
         private object sync = new object();
         protected abstract void RenderContent();
         protected abstract void RenderActionSection();
+        private bool rendering = true;
 
-        public ConsoleWrappersBase()
+        protected ConsoleWrappersBase()
         {
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.Black;
@@ -18,11 +19,23 @@ namespace Client.ConsoleWrappers
             Render();
         }
 
+        public void StartRendering()
+        {
+            rendering = true;
+            Render();
+        }
+        public void StopRendering()
+        {
+            rendering = false;
+        }
+
         //Буфер символов, которые вводятся пользователем
         private List<char> buffer = new List<char>();
         private int cursorPosition;
         protected void Render()
         {
+            if (!rendering)
+                return;
             lock (sync)
             {
                 Console.Clear();
@@ -34,15 +47,15 @@ namespace Client.ConsoleWrappers
                 for (int i = 0; i < buffer.Count; i++)
                 {
                     if(i == cursorPosition)
-                        RenderCursor(buffer[i]);
+                        RenderSymbol(buffer[i]);
                     else
                         Console.Write(buffer[i]);
                 }
                 if(cursorPosition == buffer.Count)
-                    RenderCursor(' ');
+                    RenderSymbol(' ');
             }
         }
-        private void RenderCursor(char symbol)
+        private void RenderSymbol(char symbol)
         {
             var backColor = Console.BackgroundColor;
             var textColor = Console.ForegroundColor;
@@ -50,6 +63,14 @@ namespace Client.ConsoleWrappers
             Console.ForegroundColor = backColor;
             Console.Write(symbol);
             Console.BackgroundColor = backColor;
+            Console.ForegroundColor = textColor;
+        }
+        protected void WriteLine(string line) => WriteLine(line, ConsoleColor.Gray);
+        protected void WriteLine(string line, ConsoleColor color)
+        {
+            var textColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            Console.WriteLine(line);
             Console.ForegroundColor = textColor;
         }
         protected virtual UserInput ReadInput()
@@ -60,10 +81,12 @@ namespace Client.ConsoleWrappers
                 if (char.IsDigit(currentKey.KeyChar)
                     && buffer.Count == 1 
                     && buffer[0] == '/')
+
                 {
                     var actionIndex = byte.Parse(currentKey.KeyChar.ToString());
                     buffer.Clear();
                     cursorPosition = 0;
+                    Render();
                     return new ActionInput(actionIndex);
                 }
                 else
@@ -92,6 +115,7 @@ namespace Client.ConsoleWrappers
                 }
                 Render();
             }
+            Console.WriteLine();
             var result = new string(buffer.ToArray());
             buffer.Clear();
             cursorPosition = 0;
@@ -104,7 +128,7 @@ namespace Client.ConsoleWrappers
             Console.ResetColor();
             Console.Clear();
             Render();
-            System.Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }

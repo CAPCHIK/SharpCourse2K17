@@ -1,19 +1,21 @@
-﻿<Properties StartupConfiguration="{A19E5D5C-CFED-4518-8262-1204C63381FD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Client/ConsoleWrappers/ConsoleWrapperBase.cs">
+﻿<Properties StartupConfiguration="{11239E61-2424-4635-8631-84197AC93891}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Server/NetworkWrapper.cs">
     <Files>
-      <File FileName="Client/ConsoleWrappers/ConsoleWrapperBase.cs" Line="43" Column="14" />
       <File FileName="Client/ConsoleWrappers/SimpleWrapper.cs" Line="37" Column="14" />
-      <File FileName="Client/Program.cs" Line="19" Column="31" />
+      <File FileName="Client/ConsoleWrappers/UserInputs/LoginPasswordPair.cs" Line="7" Column="40" />
+      <File FileName="Client/ClientCore.cs" Line="39" Column="31" />
+      <File FileName="Server/ServerCore.cs" Line="73" Column="14" />
+      <File FileName="Shared/Models/Messages/RegistrationMessage.cs" Line="3" Column="43" />
+      <File FileName="Shared/Models/Messages/Message.cs" Line="17" Column="1" />
+      <File FileName="Server/NetworkWrapper.cs" Line="66" Column="87" />
+      <File FileName="Server/Models/RemoteClient.cs" Line="15" Column="37" />
+      <File FileName="Server/Program.cs" Line="12" Column="1" />
+      <File FileName="Server/Models/DataStorage.cs" Line="20" Column="1" />
+      <File FileName="Client/ConsoleWrappers/LoginPasswordPairWrapper.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>currentKey</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Server PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

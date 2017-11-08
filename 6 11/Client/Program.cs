@@ -3,21 +3,22 @@ using Shared.Models.Messages;
 using Newtonsoft.Json;
 using System.Threading;
 using Client.ConsoleWrappers;
+using Client.ConsoleWrappers.UserInputs;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace Client
 {
     class Program
     {
-        private static SimpleWrapper reader;
          
         static void Main(string[] args)
         {
-            reader = new SimpleWrapper();
-            reader.ReadLine();
-            reader.Dispose();
+            var core = new ClientCore();
+            core.Work();
+            System.Console.WriteLine("The END");
         }
     }
 }
