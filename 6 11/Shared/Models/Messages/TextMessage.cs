@@ -28,6 +28,9 @@ namespace Shared.Models.Messages
             Id = id;
         }
 
+
+        //два метода ниже не необходимы. Написал их чтоб вы знали, что они есть
+        //Если хотите - гуглите, что это как и зачем
         
         //Так как Id задается при создании объекта, мы можем
         //Использовать его для идентификации объекта. Если Id одинаковые, то 
@@ -37,6 +40,7 @@ namespace Shared.Models.Messages
             var otherText = obj as TextMessage;
             return otherText?.Id == this.Id;
         }
+        //Нужен для генерации почти уникального числа для данного объекта
         public override int GetHashCode()
         {
             return Id.GetHashCode();
