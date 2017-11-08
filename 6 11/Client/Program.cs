@@ -13,11 +13,14 @@ namespace Client
 {
     class Program
     {
-         
+         //Точка входа в программу
         static void Main(string[] args)
         {
+            //Создаем ядро работы чата
             var core = new ClientCore();
+            //Запускаем его работу
             core.Work();
+            //Если работа завершена - выводим про это сообщение
             System.Console.WriteLine("The END");
         }
     }

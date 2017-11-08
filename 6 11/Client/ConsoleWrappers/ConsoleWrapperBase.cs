@@ -4,6 +4,8 @@ using Client.ConsoleWrappers.UserInputs;
 
 namespace Client.ConsoleWrappers
 {
+    //Класас, определяющий базовую работу нашей оболочки над консолью
+    //Его внутренняя кухня Если и будет рассмотрена - то в самом конце
     public abstract class ConsoleWrappersBase : IDisposable
     {
         private object sync = new object();
